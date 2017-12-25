@@ -17,8 +17,16 @@ switch ($funcion) {
   case 'Login':
     $login->Usuario = $_POST["usuario"];
     $login->Clave = $_POST["clave"];
-    $datosJson["ok"] = $login->Verificar();
-    if(!$datosJson["ok"]) $datosJson["mensaje"] = "Usuario o contraseña incorrectos!";
+
+    if($login->Verificar()){
+        $datosJson["ok"] = true;
+        session_start();
+        $_SESSION["session"] = true;
+        $_SESSION["usuario"] = $login->Usuario;
+    }
+    else{
+      $datosJson["mensaje"] = "Usuario o contraseña incorrectos!";
+    }
     break;
 
   default:

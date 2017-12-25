@@ -1,5 +1,7 @@
   <!DOCTYPE html>
   <html>
+  <?php include '../Session.php';?>
+  <?php if(!AbrirSession())echo RegresarInicio();?>
     <?php include "../Cabecera.php";?>
     <link href="../css/Barberos.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <body>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include '../Session.php';?>
+<?php if(!AbrirSession())echo RegresarInicio();?>
 <?php include '../Cabecera.php'; ?>
 <body>
  <?php include "../Menu.php";?>
