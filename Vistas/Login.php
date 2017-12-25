@@ -29,7 +29,7 @@
         </div>
         <a id="BtnAceptar"
         class="btn-large waves-effect waves-light black"
-        onclick="Login()">Ingresar</a>
+        onclick="Login()">Ingresar<i class="material-icons right">send</i></a>
       </div>
       <br><br>
     </div>
