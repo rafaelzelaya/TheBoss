@@ -12,6 +12,11 @@ Servicios
 Id
 Nombre
 Precio
+(Corte de cabello,
+corte de barba,
+perfilado de barba,
+cejas, 
+y en un futuro faciales)
 
 Clientes
 --------
