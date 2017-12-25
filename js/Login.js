@@ -6,11 +6,12 @@ function Login(){
       usuario: user,
       clave: clave
   },function(data){
-    if(data.mensaje){
+    if(data.ok){
       Materialize.toast("Ingreso correcto",4000);
+      location.href = "../Vistas/PuntoVenta.php";
     }
     else {
-      Materialize.toast("Usuario o contraseña incorrectos!",4000);
+      Materialize.toast(data.mensaje,4000);
     }
   });
 }

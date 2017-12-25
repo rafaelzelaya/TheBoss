@@ -3,6 +3,7 @@ include "../Modelos/Login.php";
 header('content-type: application/json; charset=utf-8');
 $datosJson = array();
 $funcion = "";
+
 if (isset($_POST["funcion"])) {
   $funcion = $_POST["funcion"];
 }
@@ -16,7 +17,8 @@ switch ($funcion) {
   case 'Login':
     $login->Usuario = $_POST["usuario"];
     $login->Clave = $_POST["clave"];
-    $datosJson["mensaje"] = $login->Verificar();
+    $datosJson["ok"] = $login->Verificar();
+    if(!$datosJson["ok"]) $datosJson["mensaje"] = "Usuario o contraseña incorrectos!";
     break;
 
   default:

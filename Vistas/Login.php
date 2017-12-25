@@ -17,7 +17,7 @@
       <div class="row center">
         <div class="row">
           <div class="input-field col s12">
-            <input id="txtUseario" type="text" class="validate">
+            <input id="txtUsuario" type="text" class="validate">
             <label for="txtUsuario">Usuario</label>
           </div>
           <div class="input-field col s12">
