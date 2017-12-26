@@ -1,0 +1,7 @@
+i.icon_red{
+  color:red;
+}
+span.tamaño_texto,a.tamaño_texto{
+  font-size: 200% !important;
+  color: black;
+}
