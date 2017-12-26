@@ -7,16 +7,23 @@ Nombres
 Apellidos
 Dui
 
-Servicios
+ServicioProducto
 ---------
 Id
+Codigo
 Nombre
 Precio
+EsProducto
 (Corte de cabello,
 corte de barba,
 perfilado de barba,
-cejas, 
-y en un futuro faciales)
+cejas,
+y en un futuro faciales, serian los servicios que deben quedar registrados)
+Funciones que estoy necesitando:
+* ObtenerTodosServicios();
+
+--Pregunta: como quiere que funcione el codigo por barbero si el Cliente
+pide mas de un corte.
 
 Clientes
 --------
