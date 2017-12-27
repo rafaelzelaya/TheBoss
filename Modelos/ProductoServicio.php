@@ -20,7 +20,7 @@ class ProductoServicio
      $resultado = $mysqli->query($sql);
      $listaServicios = array();
      while ($fila = $resultado->fetch_assoc()) {
-         $ProductoServicio = new Barbero();
+         $ProductoServicio = new ProductoServicio();
          $ProductoServicio-> Id = $fila["id"];
          $ProductoServicio->Codigo = $fila["codigo"];
          $ProductoServicio->Nombre = $fila["nombre"];
