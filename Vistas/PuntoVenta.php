@@ -18,16 +18,16 @@
   <!--Crear modal para venta de productos
   agregar siempre a la variable Factura los resultados(codigo,cantidad)-->
   <!-- Modal. Formulario para guardar editar barberos -->
-  <div id="modalBarberoServicio" class="modal modal-fixed-footer">
+  <div id="modal_BarberoServicio" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <h4 id="TituloModalBarberoSerivicio">Modal Header</h4>
+      <h4 id="TituloModal_BarberoServicio">Modal Header</h4>
       Contenido del modal va aquí
       <input type="hidden" value="" id="modalIdCodigoServicio" />
     </div>
     <div class="modal-footer">
       <a href="#!"
         class="modal-action modal-close waves-effect waves-green btn-flat "
-        id = "Boton1ModalBarberoServicio">Boton1</a>
+        id = "Boton1Modal_BarberoServicio">Boton1</a>
         <a href="#!"
           class="modal-action modal-close waves-effect waves-green btn-flat "
           id = "Boton2Modal">Cancelar</a>

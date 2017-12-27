@@ -1,5 +1,5 @@
 /*funciones globales de todo el sistema*/
-function ObtenerTodosBarbero(){
+function ObtenerTodosBarbero(idImprimirResultado){
   $.post("../Controladores/BarberoController.php",{
       funcion: "ObtenerTodosBarbero",
   },function(data){
@@ -37,8 +37,14 @@ function ObtenerTodosBarbero(){
       grid+="</tr>";
     }
     grid+="</tbody></table>";
-    $("#Resultado").html('');
-    $("#Resultado").html(grid);
-    $("#Resultado").removeClass('scale-out');
+    $("#"+idImprimirResultado).html('');
+    $("#"+idImprimirResultado).html(grid);
+    $("#"+idImprimirResultado).removeClass('scale-out');
   });
+}
+function ConfigurarModal(titulo,txtBoton,funcionAceptar,sufijo){
+    $("#TituloModal_"+sufijo).html(titulo);
+    $("#Boton1Modal_"+sufijo).html(txtBoton);
+    $("#Boton1Modal_"+sufijo).off();
+    $("#Boton1Modal_"+sufijo).click(funcionAceptar);
 }

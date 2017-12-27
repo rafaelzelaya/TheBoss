@@ -17,14 +17,16 @@ function CargarListaServicio(){
       collection += "<li class='collection-item avatar valign-wrapper'>";
       collection += "<span class='title tamaño_texto'>" + todos[i].Nombre
                  +" " + todos[i].Precio+"</span>";
-      collection += "<a onclick='AbrirSeleccionBarbero('"+todos[i].Codigo+"')'>";
+      collection += "<a onclick='AbrirSeleccionBarbero('"+todos[i].Codigo+"','"
+                 +todos[i].Nombre+"')'>";
       collection += "<i class='medium material-icons'>add_circle_outline</i>";
       collection += "</a>";
-        collection += "<a onclick='ReducirCantidadServicio('"+todos[i].Codigo+"')'>";
-        collection += "<i class='medium material-icons icon_red'>remove_circle_outline</i>";
+      collection += "<a onclick='ReducirCantidadServicio('"+todos[i].Codigo
+                 +"','"+todos[i].Nombre+"')'>";
+      collection += "<i class='medium material-icons icon_red'>remove_circle_outline</i>";
       collection += "</a>";
       collection += "<a href='#!' class='secondary-content tamaño_texto'>";
-        collection += "Cantidad: <span id='cantidad_"+todos[i].Codigo+"'>0</span>";
+      collection += "Cantidad: <span id='cantidad_"+todos[i].Codigo+"'>0</span>";
       collection += "</a>";
       collection += "</li>";
     }
@@ -34,9 +36,8 @@ function CargarListaServicio(){
 }
 /*Esta funcion se dispara cuando se seleccionar aumentar a la cantidad
 de un servicio en la vista principal*/
-function AbrirSeleccionBarbero(codigoServicio){
-  //Abrir modal si no esta abierto
-  $('#modalBarberoServicio').modal('open');//falta verificar que no este abierto
+function AbrirSeleccionBarbero(codigoServicio,nombreServicio){
+  ConfigurarModal("Agregar Servicio "+nombreServicio,"Aceptar",null,"BarberoServicio");
   //ocultar el codigo del servicio y otros datos dentro del modal
   $("#modalIdCodigoServicio").val(codigoServicio);
   //Cargar la lista de barberos
@@ -96,10 +97,4 @@ function ReducirCantidadServicio(codigo,idBarbero){
 }
 function PruebaAbrirModal(){
   $('#modalBarberoServicio').modal('open');
-}
-function ConfigurarModal(titulo,txtBoton,funcionAceptar){
-    $("#TituloModalBarberoSerivicio").html(titulo);
-    $("#Boton1ModalBarberoServicio").html(txtBoton);
-    $("#Boton1ModalBarberoServicio").off();
-    $("#Boton1ModalBarberoServicio").click(funcionAceptar);
 }

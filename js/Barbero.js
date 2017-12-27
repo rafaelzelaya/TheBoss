@@ -53,7 +53,7 @@ function GuardarBarbero(){
       dui: dui
   },function(data){
     Materialize.toast(data.mensaje,4000);
-    ObtenerTodosBarbero();
+    ObtenerTodosBarbero("Resultado");
   });
 }
 function EditarBarbero(){
@@ -69,7 +69,7 @@ function EditarBarbero(){
       id: id
   },function(data){
     Materialize.toast(data.mensaje,4000);
-    ObtenerTodosBarbero();
+    ObtenerTodosBarbero("Resultado");
   });
 }
 function EliminarBarbero(){
@@ -81,7 +81,7 @@ function EliminarBarbero(){
   },function(data){
     Materialize.toast(data.mensaje,4000);
     $("#Resultado").addClass('scale-out');
-    ObtenerTodosBarbero();
+    ObtenerTodosBarbero("Resultado");
   });
 }
 function EsDuiNuevo(){
