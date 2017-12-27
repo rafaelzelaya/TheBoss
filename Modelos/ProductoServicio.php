@@ -123,6 +123,29 @@ class ProductoServicio
         }
 
 
+    function generarCodigos($cantidad, $longitud, $incluyeNum=true){
+        $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        if($incluyeNum)
+            $caracteres .= "1234567890";
 
+        $arrPassResult=array();
+        $index=0;
+        while($index<$cantidad){
+            $tmp="";
+            for($i=0;$i<$longitud;$i++){
+                $tmp.=$caracteres[rand(0,strlen($caracteres)-1)];
+            }
+            if(!in_array($tmp, $arrPassResult)){
+                $arrPassResult[]=$tmp;
+                $index++;
+            }
+        }
+        return $arrPassResult;
+    }
+
+ function VerificarSiCodigoExiste($codigo){
+
+
+ }
 
 }
