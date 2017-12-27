@@ -38,6 +38,7 @@
   <!--  Scripts-->
   <script src="../js/jquery3.2.1.js"></script>
   <script src="../js/materialize.js"></script>
-  <script src="../js/Menu.js"></script>';
+  <script src="../js/Menu.js"></script>
+  <script src="../js/Global.js"></script>';
   //https://code.jquery.com/jquery-2.1.1.min.js
   ?>
