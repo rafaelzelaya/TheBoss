@@ -14,14 +14,13 @@
       <div class="row" id = "collectionId">Servicios no disponibles por el momento</div>
     </div>
   </div>
-  <a onclick="PruebaAbrirModal()">Prueba Abrir Modal</a>
   <!--Crear modal para venta de productos
   agregar siempre a la variable Factura los resultados(codigo,cantidad)-->
   <!-- Modal. Formulario para guardar editar barberos -->
   <div id="modal_BarberoServicio" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4 id="TituloModal_BarberoServicio">Modal Header</h4>
-      Contenido del modal va aquí
+      <div id = "ModalresultadoBarberos">Contenido del modal va aquí
       <input type="hidden" value="" id="modalIdCodigoServicio" />
     </div>
     <div class="modal-footer">
@@ -33,6 +32,7 @@
           id = "Boton2Modal">Cancelar</a>
     </div>
   </div>
+</div>
   <?php include "../footer.php"?>
   <script src="../js/PuntoVenta.js"></script>
   </body>

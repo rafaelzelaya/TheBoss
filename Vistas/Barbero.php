@@ -42,8 +42,10 @@
   <div class="row center">
     <div class="col s8 offset-s2">
 
-      <a class="waves-effect waves-light btn" onclick="AbrirModal('GuardarBarbero');">Nuevo Barbero</a>
-      <a class="waves-effect waves-light btn" onclick="ObtenerTodosBarbero();">Mostrar Barberos</a>
+      <a class="waves-effect waves-light btn"
+          onclick="AbrirModal('GuardarBarbero');">Nuevo Barbero</a>
+      <a class="waves-effect waves-light btn"
+          onclick="ObtenerTodosBarbero('Resultado');">Mostrar Barberos</a>
       <!--Tabla respuesta de todos los barberos-->
 
          <div id="Resultado" class="scale-transition scale-out"></div>

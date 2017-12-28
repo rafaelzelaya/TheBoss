@@ -5,7 +5,7 @@
  * Date: 12-26-17
  * Time: 06:50 PM
  */
-include "../Modelos/ProductoServicio.php.php";
+include "../Modelos/ProductoServicio.php";
 header('content-type: application/json; charset=utf-8');
 $datosJson = array();
 $funcion = "";

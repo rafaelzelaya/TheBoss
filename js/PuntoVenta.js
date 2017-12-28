@@ -7,8 +7,9 @@ $( document ).ready(function() {
   CargarListaServicio();
 });
 function CargarListaServicio(){
-  $.post("../Controladores/PuntoVentaController.php",{
-      funcion: "ObtenerTodosServicios",
+  Materialize.toast("Cargando lista de servicios",4000);
+  $.post("../Controladores/ProductoServicioController.php",{
+      funcion: "ObtenerServicios",
   },function(data){
     Materialize.toast(data.mensaje,4000);
     var todos = data.todos;
@@ -16,18 +17,18 @@ function CargarListaServicio(){
     for(var i = 0;i<todos.length;i++){
       collection += "<li class='collection-item avatar valign-wrapper'>";
       collection += "<span class='title tamaño_texto'>" + todos[i].Nombre
-                 +" " + todos[i].Precio+"</span>";
-      collection += "<a onclick='AbrirSeleccionBarbero('"+todos[i].Codigo+"','"
-                 +todos[i].Nombre+"')'>";
+                 +" $" + todos[i].Precio+"</span>";
+      collection += "<div href='#!' class='secondary-content tamaño_texto'>";
+      collection += "<a onclick=\"AbrirSeleccionBarbero('"+todos[i].Codigo+"','"
+                 +todos[i].Nombre+"')\">";
       collection += "<i class='medium material-icons'>add_circle_outline</i>";
       collection += "</a>";
-      collection += "<a onclick='ReducirCantidadServicio('"+todos[i].Codigo
-                 +"','"+todos[i].Nombre+"')'>";
+      collection += "<a onclick=\"ReducirCantidadServicio('"+todos[i].Codigo
+                 +"','"+todos[i].Nombre+"')\">";
       collection += "<i class='medium material-icons icon_red'>remove_circle_outline</i>";
       collection += "</a>";
-      collection += "<a href='#!' class='secondary-content tamaño_texto'>";
       collection += "Cantidad: <span id='cantidad_"+todos[i].Codigo+"'>0</span>";
-      collection += "</a>";
+      collection += "</div>";
       collection += "</li>";
     }
     collection +="</ul>";
@@ -41,6 +42,7 @@ function AbrirSeleccionBarbero(codigoServicio,nombreServicio){
   //ocultar el codigo del servicio y otros datos dentro del modal
   $("#modalIdCodigoServicio").val(codigoServicio);
   //Cargar la lista de barberos
+  ObtenerTodosBarbero("ModalresultadoBarberos");
 }
 /*Carga la lista de barberos para mostrarlos en el modal*/
 function CargarListaBarberos(){
@@ -94,7 +96,4 @@ function ReducirCantidadServicio(codigo,idBarbero){
     Cantidad: cantidad,
     IdBarbero: idBarbero
   };
-}
-function PruebaAbrirModal(){
-  $('#modalBarberoServicio').modal('open');
 }
