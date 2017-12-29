@@ -6,8 +6,11 @@ function AbrirConexion(){
       . $Mysqli->connect_error;
   }
   else{
-    return $Mysqli;
+      //echo "<h1>conectado</h1>";
+
+      return $Mysqli;
   }
+
   //echo $mysqli->host_info . "\n";
   /*$mysqli = new mysqli("127.0.0.1", "root", "", "Barberia", 3306);
   if ($mysqli->connect_errno) {
