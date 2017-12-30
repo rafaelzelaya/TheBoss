@@ -84,9 +84,11 @@ CREATE TABLE `tbl_serviciosproductos` (
 --
 
 INSERT INTO `tbl_serviciosproductos` (`id`, `codigo`, `nombre`, `precio`, `esproducto`) VALUES
-(1, '112041000', 'Corte de Cabello premiun', '5.00', 0),
-(2, '1120455', 'facial exfoliante', '4.99', 0),
-(3, '254201452', 'Cera Suavecito', '4.77', 1);
+(1, 'S0001', 'Corte de Cabello', '5.00', 0),
+(2, 'S0002', 'Corte de Barba', '4.50', 0),
+(3, 'S0003', 'Perfilado de Barba', '3.50', 0);
+(4, 'S0004', 'Perfilado de cejas', '4.50', 0);
+(5, 'S0005', 'Faciales', '4.00', 0);
 
 --
 -- Indexes for dumped tables
