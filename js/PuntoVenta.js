@@ -95,6 +95,12 @@ function VerFactura(){
   var html = "";
   for(var codigoServicio in Factura){
     for(var servicio in Factura[codigoServicio]){
+      //codigoServicio
+      var idBarbero = Factura[codigoServicio][servicio].IdBarbero;
+      var nombresBarbero = Factura[codigoServicio][servicio].NombresBarbero;
+      var apellidosBarbero = Factura[codigoServicio][servicio].ApellidiosBarbero;
+      var nombreServicio = Factura[codigoServicio][servicio].NombreServicio;
+      var precioServicio = Factura[codigoServicio][servicio].PrecioServicio;
       html+="Codigo Servicio: " + codigoServicio
           + ", idBarbero: " + Factura[codigoServicio][servicio].IdBarbero
           + "<br/>";
