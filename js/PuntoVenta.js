@@ -20,7 +20,7 @@ function CargarListaServicio(){
                  +" $" + todos[i].Precio+"</span>";
       collection += "<div href='#!' class='secondary-content tamaño_texto'>";
       collection += "<a onclick=\"AbrirSeleccionBarbero('"+todos[i].Codigo+"','"
-                 +todos[i].Nombre+"','"+todos[i].precio+"')\">";
+                 +todos[i].Nombre+"','"+todos[i].Precio+"')\">";
       collection += "<i class='medium material-icons'>add_circle_outline</i>";
       collection += "</a>";
       collection += "<a onclick=\"ReducirCantidadServicio('"+todos[i].Codigo
@@ -55,8 +55,9 @@ function BarberoSeleccionado(idBarbero,nombres,apellidos){
   Materialize.toast("Barbero seleccionado:"+idBarbero,4000);
   //debe estar oculta la información de codigo del servicio
   //obtener el codigo del servicio
+
   var codigoServicio = $("#modalIdCodigoServicio").val();
-  var nombreServicio = $("#modalIdNombreServicio").val();
+  var nombreServicio = $("#modalNombreServicio").val();
   var precioServicio = $("#modalPrecioServicio").val();
   //Cerrar el modal
   $('#modal_BarberoServicio').modal('close');
@@ -76,12 +77,14 @@ function AumentarCantidadServicio(
     idBarbero,
     nombresBarbero,
     apellidosBarbero){
+
   var cantidad = parseInt($("#cantidad_"+codigoServicio).html(),10);
   cantidad++;
   $("#cantidad_"+codigoServicio).html(cantidad);
   if(Factura[codigoServicio] == undefined){
     Factura[codigoServicio] = [];
   }
+
   Factura[codigoServicio][Factura[codigoServicio].length] = {
     IdBarbero: idBarbero,
     NombresBarbero: nombresBarbero,
@@ -92,20 +95,30 @@ function AumentarCantidadServicio(
   };
 }
 function VerFactura(){
-  var html = "";
+  var html = "<table class='highlight striped flow-text' >";
+  html+="<thead><tr>"
+    +"<th>Servicio</th>"
+    +"<th>Barbero</th>"
+    +"<th>Precio</th>"
+    +"</tr></thead>"
+    +"<tbody>";
   for(var codigoServicio in Factura){
     for(var servicio in Factura[codigoServicio]){
       //codigoServicio
       var idBarbero = Factura[codigoServicio][servicio].IdBarbero;
       var nombresBarbero = Factura[codigoServicio][servicio].NombresBarbero;
-      var apellidosBarbero = Factura[codigoServicio][servicio].ApellidiosBarbero;
+      var apellidosBarbero = Factura[codigoServicio][servicio].ApellidosBarbero;
       var nombreServicio = Factura[codigoServicio][servicio].NombreServicio;
       var precioServicio = Factura[codigoServicio][servicio].PrecioServicio;
-      html+="Codigo Servicio: " + codigoServicio
-          + ", idBarbero: " + Factura[codigoServicio][servicio].IdBarbero
-          + "<br/>";
+
+      html+="<tr>"
+          + "<td>" + nombreServicio + "</td>"
+          + "<td>" + nombresBarbero + " " + apellidosBarbero + "</td>"
+          + "<td>" + precioServicio + "</td>"
+          + "</tr>";
     }
   }
+  html+="</tbody></table>";
   $("#verFactura").html(html);
 }
 /*Esta funcion se dispara cuando se pulsa el menos en un servicio*/
@@ -156,7 +169,7 @@ function ObtenerTodosBarbero(idImprimirResultado){
       grid+="<tr onclick='BarberoSeleccionado(\""
         +todos[i].Dui+"\",\""
         +todos[i].Nombres+"\",\""
-        +todos[i].Apellidos+")'>";
+        +todos[i].Apellidos+"\")'>";
         grid += "<td>"+ todos[i].Nombres + "</td>"
               + "<td>"+ todos[i].Apellidos + "</td>"
               + "<td>"+ todos[i].Dui+ "</td>";
