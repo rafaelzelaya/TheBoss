@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 27, 2017 at 03:04 AM
+-- Generation Time: Dec 29, 2017 at 12:35 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -42,7 +42,9 @@ CREATE TABLE `barberos` (
 INSERT INTO `barberos` (`Id`, `Nombres`, `Apellidos`, `Dui`) VALUES
 (33, 'asdf', 'lkj', '838383838'),
 (34, '', '', ''),
-(35, '', '', '6');
+(35, '', '', '6'),
+(36, 'jose alfredo', 'merino campos', '00012457-'),
+(37, 'maque', 'aver', '000.125');
 
 -- --------------------------------------------------------
 
@@ -73,7 +75,7 @@ CREATE TABLE `tbl_serviciosproductos` (
   `id` int(11) NOT NULL,
   `codigo` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
   `nombre` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `precio` decimal(10,6) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
   `esproducto` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -82,9 +84,9 @@ CREATE TABLE `tbl_serviciosproductos` (
 --
 
 INSERT INTO `tbl_serviciosproductos` (`id`, `codigo`, `nombre`, `precio`, `esproducto`) VALUES
-(1, '112041000', 'Corte de Cabello premiun', '5.000000', 0),
-(2, '1120455', 'facial exfoliante', '4.990000', 0),
-(3, '254201452', 'Cera Suavecito', '4.770000', 1);
+(1, '112041000', 'Corte de Cabello premiun', '5.00', 0),
+(2, '1120455', 'facial exfoliante', '4.99', 0),
+(3, '254201452', 'Cera Suavecito', '4.77', 1);
 
 --
 -- Indexes for dumped tables
@@ -117,7 +119,7 @@ ALTER TABLE `tbl_serviciosproductos`
 -- AUTO_INCREMENT for table `barberos`
 --
 ALTER TABLE `barberos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tbl_serviciosproductos`
