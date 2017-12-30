@@ -35,7 +35,11 @@
     </div>
   </div>
 </div>
-<div id="verFactura" onclick="VerFactura();">click me!</div>
+<div class="row center">
+<div class="col s8 offset-s2">
+  <div id="verFactura">Ingresa un pedido!</div>
+</div>
+</div>
   <?php include "../footer.php"?>
   <script src="../js/PuntoVenta.js"></script>
   </body>

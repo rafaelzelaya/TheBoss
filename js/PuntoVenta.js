@@ -52,7 +52,7 @@ function AbrirSeleccionBarbero(codigoServicio,nombreServicio,precio){
 /*Esta funcion se dispara cuando se selecciona un barbero en el modal
 deben estar las llamadas a funciones precargadas con el id de cada barbero*/
 function BarberoSeleccionado(idBarbero,nombres,apellidos){
-  Materialize.toast("Barbero seleccionado:"+idBarbero,4000);
+  Materialize.toast("Barbero seleccionado:"+nombres,4000);
   //debe estar oculta la información de codigo del servicio
   //obtener el codigo del servicio
 
@@ -93,6 +93,7 @@ function AumentarCantidadServicio(
     NombreServicio: nombreServicio,
     PrecioServicio: precioServicio
   };
+  VerFactura();
 }
 function VerFactura(){
   var html = "<table class='highlight striped flow-text' >";

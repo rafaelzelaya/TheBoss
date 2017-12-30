@@ -10,5 +10,6 @@ echo '<head>
       media="screen,projection"/>
   <link href="../css/estilo.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="icon" href="../img/favicon.ico" type="image/ico">
+  <link href="../css/Global.css" type="text/css" rel="stylesheet"/>
 </head>';
 ?>
