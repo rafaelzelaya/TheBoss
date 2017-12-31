@@ -30,6 +30,7 @@ function CargarListaServicio(){
       collection += "Cantidad: <span id='cantidad_"+todos[i].Codigo+"'>0</span>";
       collection += "</div>";
       collection += "</li>";
+
     }
     collection +="</ul>";
     $("#collectionId").html(collection);
@@ -96,6 +97,7 @@ function AumentarCantidadServicio(
   VerFactura();
 }
 function VerFactura(){
+  var totalDetalle = parseFloat(0);
   var html = "<table class='highlight striped flow-text' >";
   html+="<thead><tr>"
     +"<th>Servicio</th>"
@@ -111,15 +113,23 @@ function VerFactura(){
       var apellidosBarbero = Factura[codigoServicio][servicio].ApellidosBarbero;
       var nombreServicio = Factura[codigoServicio][servicio].NombreServicio;
       var precioServicio = Factura[codigoServicio][servicio].PrecioServicio;
-
+      totalDetalle= parseFloat(totalDetalle) + parseFloat(precioServicio);
       html+="<tr>"
           + "<td>" + nombreServicio + "</td>"
-          + "<td>" + nombresBarbero + " " + apellidosBarbero + "</td>"
-          + "<td>" + precioServicio + "</td>"
+          + "<td>" + nombresBarbero + "</td>"
+          + "<td>$" + precioServicio + "</td>"
           + "</tr>";
     }
   }
-  html+="</tbody></table>";
+  html+="</tbody>";
+  //total de la Factura
+  html+="<tfoot>"
+    +"<tr>"
+    +"<td colspan=2>TOTAL</td>"
+    +"<td>$"+totalDetalle.toFixed(2)+"</td>"
+    +"</tr>"
+    +"</tfoot>";
+  html+="</table>";
   $("#verFactura").html(html);
 }
 /*Esta funcion se dispara cuando se pulsa el menos en un servicio*/
