@@ -21,11 +21,11 @@ function CargarListaServicio(){
       collection += "<div href='#!' class='secondary-content tamaño_texto'>";
       collection += "<a onclick=\"AbrirSeleccionBarbero('"+todos[i].Codigo+"','"
                  +todos[i].Nombre+"','"+todos[i].Precio+"')\">";
-      collection += "<i class='medium material-icons'>add_circle_outline</i>";
+      collection += "<i class='small material-icons'>add_circle_outline</i>";
       collection += "</a>";
       collection += "<a onclick=\"ReducirCantidadServicio('"+todos[i].Codigo
                  +"','"+todos[i].Nombre+"','"+todos[i].precio+"')\">";
-      collection += "<i class='medium material-icons icon_red'>remove_circle_outline</i>";
+      collection += "<i class='small material-icons icon_red'>remove_circle_outline</i>";
       collection += "</a>";
       collection += "Cantidad: <span id='cantidad_"+todos[i].Codigo+"'>0</span>";
       collection += "</div>";

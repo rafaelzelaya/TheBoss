@@ -11,7 +11,7 @@
     <div class="container">
       <h1 class="header center black-text">Punto de Venta</h1>
       <h3>Servicios</h3>
-      <div class="row" id = "collectionId">Servicios no disponibles por el momento</div>
+      <div class="row" id = "collectionId">No existen servicios registrados</div>
     </div>
   </div>
   <!--Crear modal para venta de productos
