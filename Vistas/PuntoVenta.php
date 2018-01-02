@@ -26,18 +26,21 @@
       <input type="hidden" value="" id="modalPrecioServicio" />
     </div>
     <div class="modal-footer">
-      <!--a href="#!"
+      <a href="#!"
         class="modal-action modal-close waves-effect waves-green btn-flat "
-        id = "Boton1Modal_BarberoServicio">Boton1</a-->
+        id = "Boton1Modal_BarberoServicio">Boton1</a>
         <a href="#!"
           class="modal-action modal-close waves-effect waves-green btn-flat "
           id = "Boton2Modal">Cancelar</a>
     </div>
   </div>
-</div>
+
+
 <div class="row center">
 <div class="col s8 offset-s2">
-  <div id="verFactura">Ingresa un pedido!</div>
+  <!--div id="verFactura">Ingresa un pedido!</div-->
+  <a class="waves-effect waves-light btn" onclick="VerFactura()">
+    <i class="material-icons left">check</i>Ver Factura</a>
 </div>
 </div>
   <?php include "../footer.php"?>

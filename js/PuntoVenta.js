@@ -17,15 +17,12 @@ function CargarListaServicio(){
     for(var i = 0;i<todos.length;i++){
       collection += "<li class='collection-item avatar valign-wrapper'>";
       collection += "<span class='title tamaño_texto'>" + todos[i].Nombre
-                 +" $" + todos[i].Precio+"</span>";
+                 + " $" + todos[i].Precio+"</span>";
       collection += "<div href='#!' class='secondary-content tamaño_texto'>";
-      collection += "<a onclick=\"AbrirSeleccionBarbero('"+todos[i].Codigo+"','"
-                 +todos[i].Nombre+"','"+todos[i].Precio+"')\">";
+      collection += "<a href='#' onclick=\"AbrirSeleccionBarbero('"
+                 + todos[i].Codigo+"','"
+                 + todos[i].Nombre+"','"+todos[i].Precio+"')\">";
       collection += "<i class='small material-icons'>add_circle_outline</i>";
-      collection += "</a>";
-      collection += "<a onclick=\"ReducirCantidadServicio('"+todos[i].Codigo
-                 +"','"+todos[i].Nombre+"','"+todos[i].precio+"')\">";
-      collection += "<i class='small material-icons icon_red'>remove_circle_outline</i>";
       collection += "</a>";
       collection += "Cantidad: <span id='cantidad_"+todos[i].Codigo+"'>0</span>";
       collection += "</div>";
@@ -94,30 +91,52 @@ function AumentarCantidadServicio(
     NombreServicio: nombreServicio,
     PrecioServicio: precioServicio
   };
-  VerFactura();
+  //VerFactura();
 }
+
+/*
+
+collection += "<a onclick=\"ReducirCantidadServicio('"+todos[i].Codigo
+           +"','"+todos[i].Nombre+"','"+todos[i].precio+"')\">";
+collection += "<i class='small material-icons icon_red'>remove_circle_outline</i>";
+collection += "</a>";
+
+*/
 function VerFactura(){
+  ConfigurarModal("Detalle Factura","Gravar",
+    function(){alert("todo:guardar en base, imprimir factura")},
+    "BarberoServicio");
+
+  CrearTablaFactura();
+  $('#modal_BarberoServicio').modal('open');
+}
+function CrearTablaFactura(){
   var totalDetalle = parseFloat(0);
   var html = "<table class='highlight striped flow-text' >";
   html+="<thead><tr>"
     +"<th>Servicio</th>"
     +"<th>Barbero</th>"
     +"<th>Precio</th>"
+    +"<th></th>"
     +"</tr></thead>"
     +"<tbody>";
   for(var codigoServicio in Factura){
-    for(var servicio in Factura[codigoServicio]){
+    for(var i in Factura[codigoServicio]){
       //codigoServicio
-      var idBarbero = Factura[codigoServicio][servicio].IdBarbero;
-      var nombresBarbero = Factura[codigoServicio][servicio].NombresBarbero;
-      var apellidosBarbero = Factura[codigoServicio][servicio].ApellidosBarbero;
-      var nombreServicio = Factura[codigoServicio][servicio].NombreServicio;
-      var precioServicio = Factura[codigoServicio][servicio].PrecioServicio;
+      var idBarbero = Factura[codigoServicio][i].IdBarbero;
+      var nombresBarbero = Factura[codigoServicio][i].NombresBarbero;
+      var apellidosBarbero = Factura[codigoServicio][i].ApellidosBarbero;
+      var nombreServicio = Factura[codigoServicio][i].NombreServicio;
+      var precioServicio = Factura[codigoServicio][i].PrecioServicio;
       totalDetalle= parseFloat(totalDetalle) + parseFloat(precioServicio);
       html+="<tr>"
           + "<td>" + nombreServicio + "</td>"
           + "<td>" + nombresBarbero + "</td>"
           + "<td>$" + precioServicio + "</td>"
+          + "<td><a onclick=\"ReducirCantidadServicio('"+codigoServicio+"','"+i+"')\">"
+          + "<i class='small material-icons icon_red'>remove_circle_outline</i>";
+          + "</a></td>";
+
           + "</tr>";
     }
   }
@@ -130,7 +149,7 @@ function VerFactura(){
     +"</tr>"
     +"</tfoot>";
   html+="</table>";
-  $("#verFactura").html(html);
+  $("#ModalresultadoBarberos").html(html);
 }
 /*Esta funcion se dispara cuando se pulsa el menos en un servicio*/
 function DeseleccionarBarberos(){
@@ -147,7 +166,7 @@ function MostrarBarberosEnDeseleccion(){
   la lista de factura
   ReducirCantidadServicio(codigo,idBarbero)*/
 }
-function ReducirCantidadServicio(codigo,idBarbero){
+function ReducirCantidadServicio(codigo,indiceFactura){
   var entero = parseInt($("#cantidad_"+codigo).html(),10);
   if(entero <= 0){
     entero = 0;
@@ -157,10 +176,13 @@ function ReducirCantidadServicio(codigo,idBarbero){
     entero--;
   }
   $("#cantidad_"+codigo).html(entero);
-  Factura[codigo] = {
+  Factura[codigo].splice(indiceFactura);
+  CrearTablaFactura();
+  Materialize.toast("Servicio Eliminado",4000);
+  /*Factura[codigo] = {
     Cantidad: cantidad,
     IdBarbero: idBarbero
-  };
+  };*/
 }
 
 function ObtenerTodosBarbero(idImprimirResultado){
