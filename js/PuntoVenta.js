@@ -37,6 +37,7 @@ function CargarListaServicio(){
 de un servicio en la vista principal*/
 function AbrirSeleccionBarbero(codigoServicio,nombreServicio,precio){
   ConfigurarModal("Agregar Servicio "+nombreServicio,"Aceptar",null,"BarberoServicio");
+  $("#Boton1Modal_BarberoServicio").hide();
   //ocultar el codigo del servicio y otros datos dentro del modal
   $("#modalIdCodigoServicio").val(codigoServicio);
   $("#modalNombreServicio").val(nombreServicio);
@@ -91,24 +92,27 @@ function AumentarCantidadServicio(
     NombreServicio: nombreServicio,
     PrecioServicio: precioServicio
   };
-  //VerFactura();
 }
 
-/*
-
-collection += "<a onclick=\"ReducirCantidadServicio('"+todos[i].Codigo
-           +"','"+todos[i].Nombre+"','"+todos[i].precio+"')\">";
-collection += "<i class='small material-icons icon_red'>remove_circle_outline</i>";
-collection += "</a>";
-
-*/
 function VerFactura(){
   ConfigurarModal("Detalle Factura","Gravar",
-    function(){alert("todo:guardar en base, imprimir factura")},
+    GuardarEImprimirFactura,
     "BarberoServicio");
 
   CrearTablaFactura();
+  $("#Boton1Modal_BarberoServicio").show();
   $('#modal_BarberoServicio').modal('open');
+}
+function GuardarEImprimirFactura(){
+  //Factura
+  $.post("../Controladores/FacturaController.php",{
+      funcion: "Guardar",
+      Factura: Factura
+  },function(data){
+    Materialize.toast(data,4000);
+  });
+  //
+
 }
 function CrearTablaFactura(){
   var totalDetalle = parseFloat(0);
@@ -133,7 +137,8 @@ function CrearTablaFactura(){
           + "<td>" + nombreServicio + "</td>"
           + "<td>" + nombresBarbero + "</td>"
           + "<td>$" + precioServicio + "</td>"
-          + "<td><a onclick=\"ReducirCantidadServicio('"+codigoServicio+"','"+i+"')\">"
+          + "<td><a href='#' onclick=\"ReducirCantidadServicio('"
+          + codigoServicio+"','"+i+"')\">"
           + "<i class='small material-icons icon_red'>remove_circle_outline</i>";
           + "</a></td>";
 
@@ -151,21 +156,7 @@ function CrearTablaFactura(){
   html+="</table>";
   $("#ModalresultadoBarberos").html(html);
 }
-/*Esta funcion se dispara cuando se pulsa el menos en un servicio*/
-function DeseleccionarBarberos(){
-  //Abrir modal si no esta abierto
-  //MostrarBarberosEnDeseleccion();
-}
-/*Muestra los barberos en el modal para ser deseleccionados*/
-function MostrarBarberosEnDeseleccion(){
-  //Eliminar contenido previo donde se mostrara la lista de barberos
-  /*utilizar la variable global Factura para mostrar todos los barberos
-  con el respectivo servicio asociado*/
-  /*Agrega una funcion al pulsar un barbero con su servicio que elimina
-  de la lista glogal factura el barbero con el servicio asociado y recarga
-  la lista de factura
-  ReducirCantidadServicio(codigo,idBarbero)*/
-}
+
 function ReducirCantidadServicio(codigo,indiceFactura){
   var entero = parseInt($("#cantidad_"+codigo).html(),10);
   if(entero <= 0){

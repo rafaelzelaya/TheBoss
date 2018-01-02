@@ -17,7 +17,7 @@ EsProducto
 (Corte de cabello,
 corte de barba,
 perfilado de barba,
-cejas, 
+cejas,
 y en un futuro faciales, serian los servicios que deben quedar registrados)
 Funciones que estoy necesitando:
 * ObtenerTodosServicios();
@@ -44,9 +44,8 @@ DetalleFactura
 Id
 Id_Factura
 Id_Servicio
-Id_Cliente
+Id_Cliente --ignorar
 Codigo_Barbero
-Descripci�n
 Precio
 Cantidad
 Subtotal
