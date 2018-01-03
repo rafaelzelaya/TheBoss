@@ -6,3 +6,12 @@ table.striped thead tr{
   background-color: #616161 !important;
   color: #fafafa !important;
 }
+.logo {
+    display: inline-block;
+    height: 100%;
+}
+
+.logo>img {
+    vertical-align: middle;
+    height: 80%;
+}
