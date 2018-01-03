@@ -107,12 +107,37 @@ function GuardarEImprimirFactura(){
   //Factura
   $.post("../Controladores/FacturaController.php",{
       funcion: "Guardar",
-      Factura: Factura
+      Factura: PresentacionDatosFactura()
   },function(data){
     Materialize.toast(data,4000);
   });
   //
 
+}
+function PresentacionDatosFactura(){
+  var detalles = [];
+  var total = parseFloat(0);
+  for(var codigoServicio in Factura){
+    for(var i in Factura[codigoServicio]){
+      //codigoServicio
+      detalles[detalles.length] = {
+        IdBarbero : Factura[codigoServicio][i].IdBarbero,
+        NombresBarbero : Factura[codigoServicio][i].NombresBarbero,
+        ApellidosBarbero : Factura[codigoServicio][i].ApellidosBarbero,
+        NombreServicio : Factura[codigoServicio][i].NombreServicio,
+        PrecioServicio : Factura[codigoServicio][i].PrecioServicio
+      }
+      total = parseFloat(total) +
+        parseFloat(Factura[codigoServicio][i].PrecioServicio);
+    }
+  }
+  return {
+    Factura:{
+      Total: total,
+      FechaCreacion: new Date(),
+      DetalleFactura: detalles
+    }
+  }
 }
 function CrearTablaFactura(){
   var totalDetalle = parseFloat(0);
