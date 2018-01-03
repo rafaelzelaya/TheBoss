@@ -3,7 +3,7 @@
 <?php include '../Session.php'; ?>
 <?php include '../Cabecera.php'; ?>
 <body>
-  <?php echo CerrarSession();?>
+  <?php CerrarSession();?>
  <?//php include "../Menu.php";?>
    <div class="black lighten-2 nav-wrapper center">
      <a href="#" class="brand-logo center">
