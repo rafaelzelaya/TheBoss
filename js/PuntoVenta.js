@@ -125,7 +125,8 @@ function PresentacionDatosFactura(){
         NombresBarbero : Factura[codigoServicio][i].NombresBarbero,
         ApellidosBarbero : Factura[codigoServicio][i].ApellidosBarbero,
         NombreServicio : Factura[codigoServicio][i].NombreServicio,
-        PrecioServicio : Factura[codigoServicio][i].PrecioServicio
+        PrecioServicio : Factura[codigoServicio][i].PrecioServicio,
+        CodigoServicio : codigoServicio
       }
       total = parseFloat(total) +
         parseFloat(Factura[codigoServicio][i].PrecioServicio);
