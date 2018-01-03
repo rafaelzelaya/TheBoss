@@ -19,11 +19,13 @@
       <div class="row center">
         <div class="row">
           <div class="input-field col s12">
-            <input id="txtUsuario" type="text" class="validate">
+            <input id="txtUsuario" type="text" class="validate"
+              onkeypress="return Enter(event)">
             <label for="txtUsuario">Usuario</label>
           </div>
           <div class="input-field col s12">
-            <input id="txtContraseña" type="password" class="validate">
+            <input id="txtContraseña" type="password" class="validate"
+              onkeypress="return Enter(event)">
             <label for="txtContraseña">Clave</label>
           </div>
         </div>

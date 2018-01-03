@@ -19,3 +19,9 @@ function Login(){
     }
   });
 }
+function Enter(e){
+  if (e.keyCode == 13) {
+        Login();
+        return false;
+    }
+}
