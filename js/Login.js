@@ -1,3 +1,6 @@
+$( document ).ready(function() {
+  $('#txtUsuario').focus();
+});
 function Login(){
     console.log("entra");
   var user = $("#txtUsuario").val();
