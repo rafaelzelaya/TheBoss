@@ -114,6 +114,7 @@ function GuardarEImprimirFactura(){
   //
 
 }
+
 function PresentacionDatosFactura(){
   var detalles = [];
   var total = parseFloat(0);
@@ -133,11 +134,9 @@ function PresentacionDatosFactura(){
     }
   }
   return {
-    Factura:{
       Total: total,
       FechaCreacion: new Date(),
       DetalleFactura: detalles
-    }
   }
 }
 function CrearTablaFactura(){
