@@ -34,7 +34,7 @@ class Factura
 public function GuardarDetalle(){
     $mysql=AbrirConexion();
     $sql1 = "SELECT MAX(id) AS id FROM factura";
-    $resultado = $mysql->query($sql1);
+    $resultado = mysqli_query($mysql,$sql1);
     $this->idfactura=$resultado["id"];
     $sql='INSERT INTO `detalle_factura`( `id_factura`, `id_servicio`, `cantida`, `precio`, `id_barbero`)      VALUES ("'.$this->idfactura.'","'.$this->idservicio.'","'.$this->cantidad.'","'.$this->precio.'",         "'.$this->idbarbero.'")';
     if (mysqli_query($mysql, $sql)) {
