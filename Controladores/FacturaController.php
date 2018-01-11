@@ -12,12 +12,13 @@ else{
   echo json_encode($datosJson);
   exit();
 }
+$fac=new Factura();
 switch ($funcion) {
   case 'Guardar':
-  $factura = $_POST["Factura"];
-   $total = $factura["Total"];
-   $FechaCreacion = $factura["FechaCreacion"];
-   $detallesFactura = $factura["DetalleFactura"];
+    $factura = $_POST["Factura"];
+    $total = $factura["Total"];
+    $FechaCreacion = $factura["FechaCreacion"];
+    $detallesFactura = $factura["DetalleFactura"];
       $fac->Fecha=$FechaCreacion;
       $fac->Total=$total;
       $alerta[]=$fac->GuardarFactura();
