@@ -83,7 +83,7 @@ function AumentarCantidadServicio(
   if(Factura[codigoServicio] == undefined){
     Factura[codigoServicio] = [];
   }
-
+//holaaa
   Factura[codigoServicio][Factura[codigoServicio].length] = {
     IdBarbero: idBarbero,
     NombresBarbero: nombresBarbero,
