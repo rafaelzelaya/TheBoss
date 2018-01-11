@@ -76,7 +76,7 @@ function AumentarCantidadServicio(
     idBarbero,
     nombresBarbero,
     apellidosBarbero){
-
+//Cambio intencional
   var cantidad = parseInt($("#cantidad_"+codigoServicio).html(),10);
   cantidad++;
   $("#cantidad_"+codigoServicio).html(cantidad);
