@@ -84,6 +84,7 @@ function AumentarCantidadServicio(
     Factura[codigoServicio] = [];
   }
 //holaaa
+//hola 2
   Factura[codigoServicio][Factura[codigoServicio].length] = {
     IdBarbero: idBarbero,
     NombresBarbero: nombresBarbero,
