@@ -18,18 +18,15 @@ class Factura
     public $idbarbero="";
     public function GuardarFactura(){
         $mysql=AbrirConexion();
-        $sql='INSERT INTO `factura`( `fecha`, `total`, `esta_cancelado`) VALUES                                 ("'.$this->Fecha.'","'.$this->Total.'","'.$this->cancelado.'")';
+        $sql="INSERT INTO 'factura'( 'fecha', 'total', 'esta_cancelado') VALUES
+          ('".$this->Fecha"','".$this->Total."','".$this->cancelado."')";
 
         if (mysqli_query($mysql, $sql)) {
             return "Registro actualizado con exito";
         } else {
             return "Error: " . $sql . "<br>" . mysqli_error($mysql);
         }
-
-
         CerrarConexion($mysql);
-
-
     }
 public function GuardarDetalle(){
     $mysql=AbrirConexion();
@@ -50,6 +47,4 @@ public function GuardarDetalle(){
     $this->idbarbero="";
 
 }
-
-
 }
