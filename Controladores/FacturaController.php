@@ -1,5 +1,5 @@
 <?php
-//include "../Modelos/Factura.php";
+include "../Modelos/Factura.php";
 //include "../Modelos/DetalleFactura.php";
 header('content-type: application/json; charset=utf-8');
 $datosJson = array();
@@ -25,7 +25,7 @@ switch ($funcion) {
    for($i = 0;$i<count($detallesFactura);$i++){
      $detalle = $detallesFactura[$i];
       $fac->idbarbero= $detalle["IdBarbero"];
-      $fac->cantidad=$detalle["Cantidad"];
+      //$fac->cantidad=$detalle["Cantidad"];
       $fac->precio= $detalle["PrecioServicio"];
       $fac->idservicio= $detalle["CodigoServicio"];
       $mensaje[]=$fac->GuardarDetalle();

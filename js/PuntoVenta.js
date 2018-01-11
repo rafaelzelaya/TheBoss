@@ -105,7 +105,7 @@ function VerFactura(){
   $('#modal_BarberoServicio').modal('open');
 }
 function GuardarEImprimirFactura(){
-  Materialize.toast("hhh"+Factura.length);
+  //Materialize.toast(Factura.length);
   //Factura
   $.post("../Controladores/FacturaController.php",{
       funcion: "Guardar",
