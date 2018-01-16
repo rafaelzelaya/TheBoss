@@ -29,19 +29,26 @@ class Factura
         }
         CerrarConexion($mysql);
     }
-public function GuardarDetalle(){
+public function GuardarDetalle($idFactura,$detallesFactura){
     $mysql=AbrirConexion();
-    $sql1 = "SELECT MAX(id) AS id FROM factura";
-    $resultado = mysqli_query($mysql,$sql1);
-    $this->idfactura=$resultado["id"];
-    $sql='INSERT INTO `detalle_factura`( `id_factura`, `id_servicio`, ".
-      "`precio`, `id_barbero`)"."
-      VALUES ("'.$this->idfactura.'","'
-      .$this->idservicio.'","'.$this->cantidad.'","'.$this->precio
-      .'","'.$this->idbarbero.'")';
+    //$idFactura;
+    $sql = "INSERT INTO `detalle_factura`( `id_factura`, `id_servicio`, ".
+       "`precio`, `id_barbero`) VALUES";
+    for($i = 0;$i<count($detallesFactura);$i++){
+      $detalle = $detallesFactura[$i];
+      $idBarbero= $detalle["IdBarbero"];
+      //$fac->cantidad=$detalle["Cantidad"];
+      $precio= $detalle["PrecioServicio"];
+      $idServicio= $detalle["IdServicio"];
+
+      $sql.="('".$idFactura."','".$idServicio
+         ."','".$precio."','".$idBarbero."')";
+
+      if(($i+1)<count($detallesFactura)){ $sql.=","; }
+    }
 
     if (mysqli_query($mysql, $sql)) {
-        return "Registro actualizado con exito";
+        return "Registros actualizados con exito";
     } else {
         return "Error: " . $sql . "<br>" . mysqli_error($mysql);
     }

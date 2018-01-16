@@ -21,18 +21,10 @@ switch ($funcion) {
     $detallesFactura = $factura["DetalleFactura"];
       //$fac->Fecha=$FechaCreacion;
       $fac->Total=$total;
-      $idInsertado = $fac->GuardarFactura();
+      $idFactura = $fac->GuardarFactura();
       $datosJson['mensaje'] = "Factura creada con exito!";
-      $datosJson['mensaje'].="---FIN ERROR FACTURA---";
-   for($i = 0;$i<count($detallesFactura);$i++){
-     $detalle = $detallesFactura[$i];
-      $fac->idbarbero= $detalle["IdBarbero"];
-      //$fac->cantidad=$detalle["Cantidad"];
-      $fac->precio= $detalle["PrecioServicio"];
-      $fac->idservicio= $detalle["CodigoServicio"];
-      $datosJson['mensaje'] .= $fac->GuardarDetalle();
-   }
-
+      $datosJson['mensaje'] .="---FIN FACTURA---";
+      $datosJson['mensaje'] .= $fac->GuardarDetalle($idFactura,$detallesFactura);
     break;
   default:
       $datosJson['mensaje'] = "Funcion no encontrada";

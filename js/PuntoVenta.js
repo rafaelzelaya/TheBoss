@@ -15,16 +15,17 @@ function CargarListaServicio(){
     var todos = data.todos;
     var collection = "<ul class='collection'>";
     for(var i = 0;i<todos.length;i++){
+
       collection += "<li class='collection-item avatar valign-wrapper'>";
       collection += "<span class='title tamaño_texto'>" + todos[i].Nombre
                  + " $" + todos[i].Precio+"</span>";
       collection += "<div href='#!' class='secondary-content tamaño_texto'>";
       collection += "<a href='#' onclick=\"AbrirSeleccionBarbero('"
-                 + todos[i].Codigo+"','"
+                 + todos[i].Id+"','"
                  + todos[i].Nombre+"','"+todos[i].Precio+"')\">";
       collection += "<i class='small material-icons'>add_circle_outline</i>";
       collection += "</a>";
-      collection += "Cantidad: <span id='cantidad_"+todos[i].Codigo+"'>0</span>";
+      collection += "Cantidad: <span id='cantidad_"+todos[i].Id+"'>0</span>";
       collection += "</div>";
       collection += "</li>";
 
@@ -35,11 +36,11 @@ function CargarListaServicio(){
 }
 /*Esta funcion se dispara cuando se seleccionar aumentar a la cantidad
 de un servicio en la vista principal*/
-function AbrirSeleccionBarbero(codigoServicio,nombreServicio,precio){
+function AbrirSeleccionBarbero(IdCodigoServicio,nombreServicio,precio){
   ConfigurarModal("Agregar Servicio "+nombreServicio,"Aceptar",null,"BarberoServicio");
   $("#Boton1Modal_BarberoServicio").hide();
   //ocultar el codigo del servicio y otros datos dentro del modal
-  $("#modalIdCodigoServicio").val(codigoServicio);
+  $("#modalIdCodigoServicio").val(IdCodigoServicio);
   $("#modalNombreServicio").val(nombreServicio);
   $("#modalPrecioServicio").val(precio);
   //Cargar la lista de barberos
@@ -55,14 +56,14 @@ function BarberoSeleccionado(idBarbero,nombres,apellidos){
   //debe estar oculta la información de codigo del servicio
   //obtener el codigo del servicio
 
-  var codigoServicio = $("#modalIdCodigoServicio").val();
+  var IdCodigoServicio = $("#modalIdCodigoServicio").val();
   var nombreServicio = $("#modalNombreServicio").val();
   var precioServicio = $("#modalPrecioServicio").val();
   //Cerrar el modal
   $('#modal_BarberoServicio').modal('close');
   //llamar AumentarCantidadServicio(codigoServicio,idBarbero);
   AumentarCantidadServicio(
-      codigoServicio,
+      IdCodigoServicio,
       nombreServicio,
       precioServicio,
       idBarbero,
@@ -70,26 +71,24 @@ function BarberoSeleccionado(idBarbero,nombres,apellidos){
       apellidos);
 }
 function AumentarCantidadServicio(
-    codigoServicio,
+    idCodigoServicio,
     nombreServicio,
     precioServicio,
     idBarbero,
     nombresBarbero,
     apellidosBarbero){
 //Cambio intencional
-  var cantidad = parseInt($("#cantidad_"+codigoServicio).html(),10);
+  var cantidad = parseInt($("#cantidad_"+idCodigoServicio).html(),10);
   cantidad++;
-  $("#cantidad_"+codigoServicio).html(cantidad);
-  if(Factura[codigoServicio] == undefined){
-    Factura[codigoServicio] = [];
+  $("#cantidad_"+idCodigoServicio).html(cantidad);
+  if(Factura[idCodigoServicio] == undefined){
+    Factura[idCodigoServicio] = [];
   }
-//holaaa
-//hola 2
-  Factura[codigoServicio][Factura[codigoServicio].length] = {
+  Factura[idCodigoServicio][Factura[idCodigoServicio].length] = {
     IdBarbero: idBarbero,
     NombresBarbero: nombresBarbero,
     ApellidosBarbero: apellidosBarbero,
-    CodigoServicio:codigoServicio,
+    IdCodigoServicio: idCodigoServicio,
     NombreServicio: nombreServicio,
     PrecioServicio: precioServicio
   };
@@ -120,19 +119,19 @@ function GuardarEImprimirFactura(){
 function PresentacionDatosFactura(){
   var detalles = [];
   var total = parseFloat(0);
-  for(var codigoServicio in Factura){
-    for(var i in Factura[codigoServicio]){
+  for(var idServicio in Factura){
+    for(var i in Factura[idServicio]){
       //codigoServicio
       detalles[detalles.length] = {
-        IdBarbero : Factura[codigoServicio][i].IdBarbero,
-        NombresBarbero : Factura[codigoServicio][i].NombresBarbero,
-        ApellidosBarbero : Factura[codigoServicio][i].ApellidosBarbero,
-        NombreServicio : Factura[codigoServicio][i].NombreServicio,
-        PrecioServicio : Factura[codigoServicio][i].PrecioServicio,
-        CodigoServicio : codigoServicio
+        IdBarbero : Factura[idServicio][i].IdBarbero,
+        NombresBarbero : Factura[idServicio][i].NombresBarbero,
+        ApellidosBarbero : Factura[idServicio][i].ApellidosBarbero,
+        NombreServicio : Factura[idServicio][i].NombreServicio,
+        PrecioServicio : Factura[idServicio][i].PrecioServicio,
+        IdServicio : idServicio
       }
       total = parseFloat(total) +
-        parseFloat(Factura[codigoServicio][i].PrecioServicio);
+        parseFloat(Factura[idServicio][i].PrecioServicio);
     }
   }
   return {
