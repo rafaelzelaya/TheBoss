@@ -17,12 +17,13 @@ class Factura
     public $precio="";
     public $idbarbero="";
     public function GuardarFactura(){
+      //return $this->Fecha;
         $mysql=AbrirConexion();
-        $sql="INSERT INTO 'factura'( 'fecha', 'total', 'esta_cancelado') VALUES
-          ('".$this->Fecha."','".$this->Total."','".$this->cancelado."')";
+        $sql="INSERT INTO factura( total, esta_cancelado) VALUES".
+          "('".$this->Total."','".$this->cancelado."')";
 
         if (mysqli_query($mysql, $sql)) {
-            return "Registro actualizado con exito";
+            return $mysql->insert_id;
         } else {
             return "Error: " . $sql . "<br>" . mysqli_error($mysql);
         }

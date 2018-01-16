@@ -17,20 +17,22 @@ switch ($funcion) {
   case 'Guardar':
     $factura = $_POST["Factura"];
     $total = $factura["Total"];
-    $FechaCreacion = $factura["FechaCreacion"];
+    //$FechaCreacion = date("y/m/d");
     $detallesFactura = $factura["DetalleFactura"];
-      $fac->Fecha=$FechaCreacion;
+      //$fac->Fecha=$FechaCreacion;
       $fac->Total=$total;
-      $alerta[]=$fac->GuardarFactura();
+      $idInsertado = $fac->GuardarFactura();
+      $datosJson['mensaje'] = "Factura creada con exito!";
+      $datosJson['mensaje'].="---FIN ERROR FACTURA---";
    for($i = 0;$i<count($detallesFactura);$i++){
      $detalle = $detallesFactura[$i];
       $fac->idbarbero= $detalle["IdBarbero"];
       //$fac->cantidad=$detalle["Cantidad"];
       $fac->precio= $detalle["PrecioServicio"];
       $fac->idservicio= $detalle["CodigoServicio"];
-      $mensaje[]=$fac->GuardarDetalle();
+      $datosJson['mensaje'] .= $fac->GuardarDetalle();
    }
-   $datosJson['mensaje'] = "Factura guardada";
+
     break;
   default:
       $datosJson['mensaje'] = "Funcion no encontrada";

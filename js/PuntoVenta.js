@@ -111,7 +111,7 @@ function GuardarEImprimirFactura(){
       funcion: "Guardar",
       Factura: PresentacionDatosFactura()
   },function(data){
-    Materialize.toast(data,4000);
+    Materialize.toast(data.mensaje,4000);
   });
   //
 
@@ -137,7 +137,7 @@ function PresentacionDatosFactura(){
   }
   return {
       Total: total,
-      FechaCreacion: new Date(),
+      //FechaCreacion: new Date(),
       DetalleFactura: detalles
   }
 }
