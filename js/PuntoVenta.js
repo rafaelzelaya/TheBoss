@@ -112,9 +112,12 @@ function GuardarEImprimirFactura(){
       Factura: PresentacionDatosFactura()
   },function(data){
     Materialize.toast(data.mensaje,4000);
+    LimpiarFactura();
   });
-  //
-
+}
+function LimpiarFactura(){
+  Factura = [];
+  CargarListaServicio();
 }
 
 function PresentacionDatosFactura(){
