@@ -37,7 +37,6 @@ public function GuardarDetalle($idFactura,$detallesFactura){
     for($i = 0;$i<count($detallesFactura);$i++){
       $detalle = $detallesFactura[$i];
       $idBarbero= $detalle["IdBarbero"];
-      //$fac->cantidad=$detalle["Cantidad"];
       $precio= $detalle["PrecioServicio"];
       $idServicio= $detalle["IdServicio"];
 
