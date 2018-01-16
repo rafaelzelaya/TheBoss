@@ -23,7 +23,7 @@ switch ($funcion) {
       $fac->Total=$total;
       $idFactura = $fac->GuardarFactura();
       $datosJson['mensaje'] = "Factura creada con exito!";
-      $datosJson['mensaje'] .="---FIN FACTURA---";
+      $datosJson['mensaje'] .="--";
       $datosJson['mensaje'] .= $fac->GuardarDetalle($idFactura,$detallesFactura);
     break;
   default:

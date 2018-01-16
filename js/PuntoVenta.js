@@ -84,6 +84,7 @@ function AumentarCantidadServicio(
   if(Factura[idCodigoServicio] == undefined){
     Factura[idCodigoServicio] = [];
   }
+
   Factura[idCodigoServicio][Factura[idCodigoServicio].length] = {
     IdBarbero: idBarbero,
     NombresBarbero: nombresBarbero,
@@ -150,21 +151,21 @@ function CrearTablaFactura(){
     +"<th></th>"
     +"</tr></thead>"
     +"<tbody>";
-  for(var codigoServicio in Factura){
-    for(var i in Factura[codigoServicio]){
+  for(var IdServicio in Factura){
+    for(var i in Factura[IdServicio]){
       //codigoServicio
-      var idBarbero = Factura[codigoServicio][i].IdBarbero;
-      var nombresBarbero = Factura[codigoServicio][i].NombresBarbero;
-      var apellidosBarbero = Factura[codigoServicio][i].ApellidosBarbero;
-      var nombreServicio = Factura[codigoServicio][i].NombreServicio;
-      var precioServicio = Factura[codigoServicio][i].PrecioServicio;
+      var idBarbero = Factura[IdServicio][i].IdBarbero;
+      var nombresBarbero = Factura[IdServicio][i].NombresBarbero;
+      var apellidosBarbero = Factura[IdServicio][i].ApellidosBarbero;
+      var nombreServicio = Factura[IdServicio][i].NombreServicio;
+      var precioServicio = Factura[IdServicio][i].PrecioServicio;
       totalDetalle= parseFloat(totalDetalle) + parseFloat(precioServicio);
       html+="<tr>"
           + "<td>" + nombreServicio + "</td>"
           + "<td>" + nombresBarbero + "</td>"
           + "<td>$" + precioServicio + "</td>"
           + "<td><a href='#' onclick=\"ReducirCantidadServicio('"
-          + codigoServicio+"','"+i+"')\">"
+          + IdServicio+"','"+i+"')\">"
           + "<i class='small material-icons icon_red'>remove_circle_outline</i>";
           + "</a></td>";
 
@@ -217,7 +218,7 @@ function ObtenerTodosBarbero(idImprimirResultado){
 
     for(var i = 0;i < todos.length;i++){
       grid+="<tr onclick='BarberoSeleccionado(\""
-        +todos[i].Dui+"\",\""
+        +todos[i].Id+"\",\""
         +todos[i].Nombres+"\",\""
         +todos[i].Apellidos+"\")'>";
         grid += "<td>"+ todos[i].Nombres + "</td>"
