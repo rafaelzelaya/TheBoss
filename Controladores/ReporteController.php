@@ -14,7 +14,8 @@ else{
 $reporte = new Reporte();
 switch ($funcion) {
   case 'ServiciosPorBarbero':
-    $datosJson['mensaje'] = "Servicios por barbero desde controller";
+    $datosJson['mensaje'] = "Servicios por barbero";
+    $datosJson['ServiciosPorBarbero'] = $reporte->ServiciosPorBarbero();
     break;
   default:
     $datosJson['mensaje'] = "Funcion no encontrada";

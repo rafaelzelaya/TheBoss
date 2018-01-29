@@ -15,7 +15,6 @@ function ObtenerTodosBarbero(idImprimirResultado){
       +"<th></th>"
       +"</tr></thead>"
       +"<tbody>";
-
     for(var i = 0;i < todos.length;i++){
       grid+="<tr>";
         grid += "<td>"+ todos[i].Nombres + "</td>"
