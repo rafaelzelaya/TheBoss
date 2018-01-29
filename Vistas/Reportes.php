@@ -22,5 +22,6 @@ inner join factura on factura.id = detalle_factura.id_factura
 where factura.fecha BETWEEN '2018-01-16' and '2018-01-17'
 group by tbl_serviciosproductos.nombre,tbl_serviciosproductos.id,barberos.Nombres
  <?php include "../footer.php"?>
+ <script src="../js/Reportes.js"></script>
  </body>
 </html>
