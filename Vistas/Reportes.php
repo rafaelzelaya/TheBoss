@@ -19,6 +19,10 @@
          <label for="fechaFinal">Fecha final</label>
        </div>
      </div>
+
+     <a class="waves-effect waves-light btn"
+         onclick="ReporteBarberosPorServicios();">Mostrar Reporte</a>
+         <br/><br/><br/>
      <div class="row" id = "collectionId">No existen reportes disponibles</div>
    </div>
  </div>
