@@ -15,7 +15,8 @@ include "../Conexion.php";
         STR_TO_DATE(\''.$fechaInicio.'\',\'%d/%m/%Y\') and
         STR_TO_DATE(\''.$fechaFinal.'\',\'%d/%m/%Y\')
         group by
-        tbl_serviciosproductos.nombre,tbl_serviciosproductos.id,barberos.Nombres';
+        tbl_serviciosproductos.nombre,tbl_serviciosproductos.id,barberos.Nombres
+        order by barberos.Nombres';
 
         $resultado = $mysqli->query($sql) or die($mysqli->error);
         $listaServiciosPorBarberos = array();
