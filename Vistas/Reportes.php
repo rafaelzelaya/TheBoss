@@ -19,7 +19,7 @@
          <label for="fechaFinal">Fecha final</label>
        </div>
      </div>
-
+     La fecha final no esta incluida en la busqueda.<br/>
      <a class="waves-effect waves-light btn"
          onclick="ReporteBarberosPorServicios();">Mostrar Reporte</a>
          <br/><br/><br/>

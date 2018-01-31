@@ -15,7 +15,10 @@ $reporte = new Reporte();
 switch ($funcion) {
   case 'ServiciosPorBarbero':
     $datosJson['mensaje'] = "Servicios por barbero";
-    $datosJson['ServiciosPorBarbero'] = $reporte->ServiciosPorBarbero();
+    $fechaInicio = $_POST["fechaInicio"];
+    $fechaFinal = $_POST["fechaFinal"];
+    $datosJson['ServiciosPorBarbero']
+      = $reporte->ServiciosPorBarbero($fechaInicio,$fechaFinal);
     break;
   default:
     $datosJson['mensaje'] = "Funcion no encontrada";

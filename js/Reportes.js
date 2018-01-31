@@ -10,11 +10,13 @@ $( document ).ready(function() {
    close: 'Cerrar',
    closeOnSelect: true // Close upon selecting a date,
  });
-  ReporteBarberosPorServicios();
+
 });
 function ReporteBarberosPorServicios(){
   $.post("../Controladores/ReporteController.php",{
       funcion: "ServiciosPorBarbero",
+      fechaInicio: $("#fechaInicio").val(),
+      fechaFinal: $("#fechaFinal").val()
   },function(data){
     var todos = data.ServiciosPorBarbero;
     Materialize.toast(data.mensaje,4000);
@@ -25,7 +27,8 @@ function ReporteBarberosPorServicios(){
       +"<th>Cantidad</th>"
       +"</tr></thead>"
       +"<tbody>";
-      var idBarbero = todos[0].IdBarbero;
+
+      var idBarbero = (todos==undefined || todos.length>0)?todos[0].IdBarbero:0;
       var totalServiciosBarbero = 0;
       var total = 0;
       for(var i = 0;i<todos.length;i++){

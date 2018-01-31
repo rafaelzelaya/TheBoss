@@ -1,7 +1,7 @@
 <?php
 include "../Conexion.php";
   class Reporte{
-    function ServiciosPorBarbero(){
+    function ServiciosPorBarbero($fechaInicio,$fechaFinal){
         $mysqli = AbrirConexion();
         $sql = 'select barberos.Nombres as barbero, barberos.Id as idBarbero,
         tbl_serviciosproductos.nombre as servicio,
@@ -11,9 +11,12 @@ include "../Conexion.php";
         inner join tbl_serviciosproductos on
         tbl_serviciosproductos.id = detalle_factura.id_servicio
         inner join factura on factura.id = detalle_factura.id_factura
-        where factura.fecha BETWEEN \'2018-01-16\' and \'2018-01-30\'
+        where factura.fecha BETWEEN
+        STR_TO_DATE(\''.$fechaInicio.'\',\'%d/%m/%Y\') and
+        STR_TO_DATE(\''.$fechaFinal.'\',\'%d/%m/%Y\')
         group by
         tbl_serviciosproductos.nombre,tbl_serviciosproductos.id,barberos.Nombres';
+
         $resultado = $mysqli->query($sql) or die($mysqli->error);
         $listaServiciosPorBarberos = array();
         while ($fila = $resultado->fetch_assoc()) {
